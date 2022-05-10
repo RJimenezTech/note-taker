@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "name": "note-taker",
+  "description": "This is an application for taking notes.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RJimenezTech/note-taker.git"
+  },
+  "author": "Robert Jimenez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RJimenezTech/note-taker/issues"
+  },
+  "homepage": "https://github.com/RJimenezTech/note-taker#readme"
+}
