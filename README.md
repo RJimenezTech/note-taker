@@ -1,2 +1,2 @@
-# note-taker
-A note taker application
+# Note Taker
+This is an application for taking notes. 
