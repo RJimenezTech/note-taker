@@ -48,22 +48,17 @@ app.get('/notes', (req,res) => {
     res.json(notes);
 });
 
+app.post('/api/notes', (req,res) => {
+    req.body.id = notes.length.toString();
+    const anote = createNewNote(req.body, req.body.id);
+    res.json(anote);
+})
+
 // delete router
-// router.get('/notes/:id', (req,res) => {
-//     let notes = db;
-
-// });
-
-// app.post('/notes', (req, res) => {
-//     req.body.id = db.length.toString();
-//     const newNote = {
-//         title = req.body.title,
-//         text = req.body.text
-//     }
-//     res.json(newNote);
-// })
-
-
+router.delete('/notes/:id', (req,res) => {
+    deleteNote(req.params.id, notes);
+    res.json(true);
+});
 
 // routes for html
 app.get('/', (req, res) => {
