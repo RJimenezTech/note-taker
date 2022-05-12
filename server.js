@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 // refer to database seed
-const notes = require('./db/db.json');
+const { notes } = require('./db/db.json');
 // set up port
 const PORT = process.env.PORT || 3001;
 // instantiate an express app
@@ -14,11 +14,12 @@ app.use(express.static('public'));
 
 function createNewNote(info, notesArray) {
     const newNote = info;
-    notesArray.push(writtenNote);
+    notesArray.push(newNote);
     fs.writeFileSync(
         path.join(__dirname, './db/db.json'),
-        JSON.stringify({notes: notesArray}, null, 2)
+        JSON.stringify( {notes: notesArray }, null, 2)
     );
+    return newNote;
 };
 
 // function to find a note given its ID, needed for delete func
@@ -44,18 +45,27 @@ function deleteNote(id, notesArray) {
 }
 
 // routes for api
-app.get('/notes', (req,res) => {
+app.get('/api/notes', (req,res) => {
     res.json(notes);
+});
+
+app.get('/api/notes/:id', (req, res) => {
+    const result = findById(req.params.id, notes);
+    if (result) {
+        res.json(result);
+    } else {
+        res.send(404);
+    }
 });
 
 app.post('/api/notes', (req,res) => {
     req.body.id = notes.length.toString();
-    const anote = createNewNote(req.body, req.body.id);
+    const anote = createNewNote(req.body, notes);
     res.json(anote);
-})
+});
 
 // delete router
-router.delete('/notes/:id', (req,res) => {
+app.delete('/api/notes/:id', (req,res) => {
     deleteNote(req.params.id, notes);
     res.json(true);
 });
