@@ -1,19 +1,9 @@
 {
   "notes": [
     {
-      "title": "a note title",
-      "text": "a note text",
-      "id": 0
-    },
-    {
-      "title": "111",
-      "text": "222",
-      "id": "1"
-    },
-    {
-      "title": "222",
-      "text": "333\n",
-      "id": "2"
+      "title": "today's agenda",
+      "text": "1. Eat breakfast\n2. Go to the gym\n3. Have coffee with a friend",
+      "id": "0"
     }
   ]
 }
